@@ -1,0 +1,21 @@
+<div class="content-section implementation" style="border-bottom:0px;">
+  <div class="ui-g ui-fluid">
+      <div class="ui-md-2">
+          <h3>Check-In</h3>
+          <p-calendar [(ngModel)]="date1" [minDate]="minDate"  tabindex="0"></p-calendar> 
+      </div>
+      <div class="ui-md-2">
+          <h3>Check-Out</h3>
+          <p-calendar [(ngModel)]="date2"  [minDate]="date1"  tabindex="0"></p-calendar> 
+      </div>
+     <div class="ui-md-2">
+      <select class='select-option' required [(ngModel)]='optionSelected' (ngModelChange)='onOptionsSelected($event)'>
+        <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
+    </select>
+     </div>
+     <div class="ui-md-2">
+       <button type="button" class="btn btn-primary">Submit</button>
+     </div>
+  </div>
+</div>  
+<app-dashboard></app-dashboard>
