@@ -11,9 +11,17 @@
       <div class="form-group">
           <label for="email" class="col-sm-3 control-label">Email</label>
           <div class="col-sm-9">
-              <input type="email" id="email" placeholder="Email" class="form-control" [(ngModel)]="user.email" name="email">
-          </div>
+              <input type="email" id="email" placeholder="Email" #email = "ngModel" class="form-control" [(ngModel)]="user.email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
       </div>
+     </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf = "email.errors?.required">
+            Email field can't be blank
+        </div>
+        <div *ngIf = "email.errors?.pattern && email.touched">
+            The email id doesn't seem right
+        </div>
+    </div>
       <div class="form-group">
           <label for="password" class="col-sm-3 control-label">Password</label>
           <div class="col-sm-9">
